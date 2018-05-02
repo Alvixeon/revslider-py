@@ -2,7 +2,8 @@ import requests,os,urllib.request,time
 from urllib.parse import urlparse
 f = open("list.txt", "r")
 fc = f.readlines()
-x=0
+if os.path.exists('slider-results'):pass
+else:os.mkdir('slider-results'),os.chdir('slider-results')
 for line in fc:
 	o = urlparse(line)
 	if o.scheme == "http" or "www" or "https":
@@ -19,8 +20,7 @@ for line in fc:
 					print ("No data found from " + line)
 					continue
 				else:
-					x=x+1
-					name = str(x)+'_admin-ajax.php'
+					name = o.netloc +'_admin-ajax.php'
 					if r.content.startswith(b'<?php'):
 						open(name, 'wb').write(r.content)
 						empty = open(name, 'r')
