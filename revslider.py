@@ -2,7 +2,7 @@ import requests,os,urllib.request,time
 from urllib.parse import urlparse
 f = open("list.txt", "r")
 fc = f.readlines()
-if os.path.exists('slider-results'):pass,os.chdir('slider-results')
+if os.path.exists('slider-results'):os.chdir('slider-results')
 else:os.mkdir('slider-results'),os.chdir('slider-results')
 for line in fc:
 	o = urlparse(line)
